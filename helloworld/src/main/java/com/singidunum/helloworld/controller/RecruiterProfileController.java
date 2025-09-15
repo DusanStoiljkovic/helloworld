@@ -54,7 +54,9 @@ public class RecruiterProfileController {
     }
 
     @PostMapping("/addNew")
-    public String addNew(RecruiterProfile recruiterProfile, @RequestParam("image") MultipartFile multipartFile, Model model) {
+    public String addNew(RecruiterProfile recruiterProfile,
+                         @RequestParam("image") MultipartFile multipartFile,
+                         Model model) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {

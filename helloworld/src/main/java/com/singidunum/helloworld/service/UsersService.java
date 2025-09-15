@@ -6,6 +6,7 @@ import com.singidunum.helloworld.entity.Users;
 import com.singidunum.helloworld.repository.JobSeekerProfileRepository;
 import com.singidunum.helloworld.repository.RecruiterProfileRepository;
 import com.singidunum.helloworld.repository.UsersRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,6 +21,7 @@ import java.util.Date;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class UsersService {
 
     private final UsersRepository usersRepository;
@@ -27,13 +29,6 @@ public class UsersService {
     private final RecruiterProfileRepository recruiterProfileRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public UsersService(UsersRepository usersRepository, JobSeekerProfileRepository jobSeekerProfileRepository, RecruiterProfileRepository recruiterProfileRepository, PasswordEncoder passwordEncoder) {
-        this.usersRepository = usersRepository;
-        this.jobSeekerProfileRepository = jobSeekerProfileRepository;
-        this.recruiterProfileRepository = recruiterProfileRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     public Users addNew(Users user) {
         user.setActive(true);
@@ -81,5 +76,9 @@ public class UsersService {
             return users;
         }
         return null;
+    }
+
+    public Users findByEmail(String currentUsername) {
+        return usersRepository.findByEmail(currentUsername).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }
