@@ -103,7 +103,7 @@ public class JobSeekerProfileController {
         JobSeekerProfile seekerProfile = jobSeekerProfileService.addNew(jobSeekerProfile);
 
         try {
-            String uploadDir = "photos/candidate/" + jobSeekerProfile.getUserAccountId();
+            String uploadDir = "photos/candidates/" + jobSeekerProfile.getUserAccountId();
             if (!Objects.equals(image.getOriginalFilename(), "")) {
                 FileUploadUtil.saveFile(uploadDir, imageName, image);
             }
@@ -133,7 +133,7 @@ public class JobSeekerProfileController {
         Resource resource = null;
 
         try {
-            resource = downloadUtil.getFileAsResource("photos/candidate/" + userId, fileName);
+            resource = downloadUtil.getFileAsResource("photos/candidates/" + userId, fileName);
         } catch (IOException e) {
             return ResponseEntity.badRequest().build();
         }

@@ -2,8 +2,11 @@ package com.singidunum.helloworld.service;
 
 import com.singidunum.helloworld.entity.*;
 import com.singidunum.helloworld.repository.JobPostActivityRepository;
+import com.singidunum.helloworld.repository.JobSeekerApplyRepository;
+import com.singidunum.helloworld.repository.JobSeekerSaveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,10 +17,18 @@ import java.util.Objects;
 public class JobPostActivityService {
 
     private final JobPostActivityRepository jobPostActivityRepository;
+    private final JobSeekerApplyService jobSeekerApplyService;
+    private final JobSeekerApplyRepository jobSeekerApplyRepository;
+    private final JobSeekerSaveService jobSeekerSaveService;
+    private final JobSeekerSaveRepository jobSeekerSaveRepository;
 
     @Autowired
-    public JobPostActivityService(JobPostActivityRepository jobPostActivityRepository) {
+    public JobPostActivityService(JobPostActivityRepository jobPostActivityRepository, JobSeekerApplyService jobSeekerApplyService, JobSeekerApplyRepository jobSeekerApplyRepository, JobSeekerSaveService jobSeekerSaveService, JobSeekerSaveRepository jobSeekerSaveRepository) {
         this.jobPostActivityRepository = jobPostActivityRepository;
+        this.jobSeekerApplyService = jobSeekerApplyService;
+        this.jobSeekerApplyRepository = jobSeekerApplyRepository;
+        this.jobSeekerSaveService = jobSeekerSaveService;
+        this.jobSeekerSaveRepository = jobSeekerSaveRepository;
     }
 
     public JobPostActivity getOne(int id) {
@@ -48,5 +59,22 @@ public class JobPostActivityService {
     public List<JobPostActivity> search(String job, String location, List<String> type, List<String> remote, LocalDate searchDate) {
         return Objects.isNull(searchDate)?jobPostActivityRepository.searchWithoutDate(job, location, remote, type):
                 jobPostActivityRepository.search(job, location, remote, type, searchDate);
+    }
+
+    @Transactional
+    public void delete(JobPostActivity job) {
+        List<JobSeekerApply> applies = jobSeekerApplyService.getJobCandidates(job);
+        List<JobSeekerSave> saveList = jobSeekerSaveService.getJobCandidates(job);
+        if(!applies.isEmpty()) {
+            for(JobSeekerApply applie : applies) {
+                jobSeekerApplyRepository.deleteByJob(job);
+            }
+        }
+        if (!saveList.isEmpty()) {
+            for(JobSeekerSave save: saveList) {
+                jobSeekerSaveRepository.deleteByJob(job);
+            }
+        }
+        jobPostActivityRepository.delete(job);
     }
 }

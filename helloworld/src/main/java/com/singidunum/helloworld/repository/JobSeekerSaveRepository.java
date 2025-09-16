@@ -16,4 +16,5 @@ public interface JobSeekerSaveRepository extends JpaRepository<JobSeekerSave, In
 
     List<JobSeekerSave> findByJob(JobPostActivity job);
 
+    void deleteByJob(JobPostActivity job);
 }
