@@ -17,45 +17,60 @@
 **Date:** 18.09.2025. 
 **Version:** 1.0  
 
----
+Job Portal Web Application
 
-## 1. Introduction
+📌 Overview
 
-HelloWorld is a job search and recruitment platform designed to connect job seekers with employers in a simple and transparent way.  
+A Spring Boot based job portal application that connects job seekers and recruiters. Job seekers can create profiles, apply to jobs, and save postings, while recruiters can post jobs and manage applicants.
 
----
+🛠️ Tech Stack
+	•	Java 17+
+	•	Spring Boot 3 (Spring MVC, Spring Data JPA, Spring Security)
+	•	Hibernate (ORM)
+	•	MySQL (or any relational DB)
+	•	Lombok
+	•	Maven
 
-## 2. System Overview
+⚙️ Architecture
 
-**Architecture:**  
-- **Backend:** Java Spring Boot  
-- **Frontend:** HTML, CSS, JavaScript and Thymeleaf  
-- **Database:** MySQL (with JPA/Hibernate)  
-- **API:** RESTful endpoints  
+The project follows the MVC (Model-View-Controller) pattern:
+	•	Models (Entities) – represent the database tables
+	•	Repositories – provide data access with Spring Data JPA
+	•	Services – implement business logic
+	•	Controllers – expose RESTful endpoints
 
-**Technologies:**  
-- Java, Spring Boot, Spring Data JPA, Hibernate  
-- MySQL  
-- Lombok, Jakarta Persistence  
-- GitHub for version control  
+⸻
 
----
+📂 Project Structure
 
-## 3. Features
+Entities
+	•	Users – represents system users (job seekers or recruiters)
+	•	UsersType – defines roles (Admin, Recruiter, JobSeeker)
+	•	RecruiterProfile – recruiter information and company details
+	•	JobCompany – company details linked to recruiters
+	•	JobLocation – job location info
+	•	RecruiterJobsDto – DTO for recruiter job postings
+	•	JobPostActivity – job posting activity tracking
+	•	JobSeekerProfile – job seeker personal and professional profile
+	•	JobSeekerApply – applications submitted by job seekers
+	•	JobSeekerSave – saved job postings
+	•	Skills – job seeker skills
 
-| Feature | Description |
-|---------|-------------|
-| User Authentication | Registration and login for job seekers and recruiters |
-| Job Posting | Recruiters can create and publish job posts |
-| Job Search | Candidates can filter/search jobs by category, location, or type |
-| Applications | Candidates can apply for jobs directly |
-| Profile Management | Users can update their personal info and view their activity |
-| Job Save | Users can save their jobs |
+Services
+	•	CustomUserDetailsService – handles authentication with Spring Security
+	•	UsersService – user management
+	•	UsersTypeService – role/permissions management
+	•	RecruiterProfileService – recruiter management
+	•	JobPostActivityService – posting and managing jobs
+	•	JobSeekerProfileService – job seeker profile management
+	•	JobSeekerApplyService – job applications
+	•	JobSeekerSaveService – saving jobs
 
----
-
-## 4. Installation
-
-1. Clone the repository  
-   ```bash
-   git clone https://github.com/DusanStoiljkovic/helloworld.git
+Controllers
+	•	HomeController – handles landing pages and general endpoints
+	•	UsersController – user registration and login
+	•	RecruiterProfileController – recruiter operations
+	•	JobSeekerProfileController – job seeker operations
+	•	JobSeekerApplyController – applying to jobs
+	•	JobSeekerSaveController – saving jobs
+	•	JobPostActivityController – job posting management
