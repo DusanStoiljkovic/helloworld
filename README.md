@@ -1,4 +1,4 @@
-<img width="1380" height="790" alt="Screenshot 2025-09-18 at 10 17 21" src="https://github.com/user-attachments/assets/e372d5df-2fa1-45ed-b963-e9a67e871bfe" /># HelloWorld — Job Search Platform
+<img width="1080" height="490" alt="Screenshot 2025-09-18 at 10 17 21" src="https://github.com/user-attachments/assets/e372d5df-2fa1-45ed-b963-e9a67e871bfe" /># HelloWorld — Job Search Platform
 
 <img width="1372" height="784" alt="Screenshot 2025-09-18 at 10 17 39" src="https://github.com/user-attachments/assets/6b303f01-b278-473f-848c-6e3fc59a2c01" /># HelloWorld — Candidate Dashboard
 
