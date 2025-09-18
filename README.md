@@ -41,36 +41,36 @@ The project follows the MVC (Model-View-Controller) pattern:
 
 ⸻
 
-📂 Project Structure
+## 📂 Project Structure  
 
-Entities
-	•	Users – represents system users (job seekers or recruiters)
-	•	UsersType – defines roles (Admin, Recruiter, JobSeeker)
-	•	RecruiterProfile – recruiter information and company details
-	•	JobCompany – company details linked to recruiters
-	•	JobLocation – job location info
-	•	RecruiterJobsDto – DTO for recruiter job postings
-	•	JobPostActivity – job posting activity tracking
-	•	JobSeekerProfile – job seeker personal and professional profile
-	•	JobSeekerApply – applications submitted by job seekers
-	•	JobSeekerSave – saved job postings
-	•	Skills – job seeker skills
+- **Entities**  
+  - `Users` – represents system users (job seekers or recruiters)  
+  - `UsersType` – defines roles (Admin, Recruiter, JobSeeker)  
+  - `RecruiterProfile` – recruiter information and company details  
+  - `JobCompany` – company details linked to recruiters  
+  - `JobLocation` – job location info  
+  - `RecruiterJobsDto` – DTO for recruiter job postings  
+  - `JobPostActivity` – job posting activity tracking  
+  - `JobSeekerProfile` – job seeker personal and professional profile  
+  - `JobSeekerApply` – applications submitted by job seekers  
+  - `JobSeekerSave` – saved job postings  
+  - `Skills` – job seeker skills  
 
-Services
-	•	CustomUserDetailsService – handles authentication with Spring Security
-	•	UsersService – user management
-	•	UsersTypeService – role/permissions management
-	•	RecruiterProfileService – recruiter management
-	•	JobPostActivityService – posting and managing jobs
-	•	JobSeekerProfileService – job seeker profile management
-	•	JobSeekerApplyService – job applications
-	•	JobSeekerSaveService – saving jobs
+- **Services**  
+  - `CustomUserDetailsService` – handles authentication with Spring Security  
+  - `UsersService` – user management  
+  - `UsersTypeService` – role/permissions management  
+  - `RecruiterProfileService` – recruiter management  
+  - `JobPostActivityService` – posting and managing jobs  
+  - `JobSeekerProfileService` – job seeker profile management  
+  - `JobSeekerApplyService` – job applications  
+  - `JobSeekerSaveService` – saving jobs  
 
-Controllers
-	•	HomeController – handles landing pages and general endpoints
-	•	UsersController – user registration and login
-	•	RecruiterProfileController – recruiter operations
-	•	JobSeekerProfileController – job seeker operations
-	•	JobSeekerApplyController – applying to jobs
-	•	JobSeekerSaveController – saving jobs
-	•	JobPostActivityController – job posting management
+- **Controllers**  
+  - `HomeController` – handles landing pages and general endpoints  
+  - `UsersController` – user registration and login  
+  - `RecruiterProfileController` – recruiter operations  
+  - `JobSeekerProfileController` – job seeker operations  
+  - `JobSeekerApplyController` – applying to jobs  
+  - `JobSeekerSaveController` – saving jobs  
+  - `JobPostActivityController` – job posting management  
